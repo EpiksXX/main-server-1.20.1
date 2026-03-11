@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  mc_server_new:
+    image: itzg/minecraft-server:latest
+    container_name: mc_1_20_1_modded
+    # --- ЭТИ СТРОКИ ВКЛЮЧАЮТ КОНСОЛЬ ---
+    tty: true
+    stdin_open: true
+    # -----------------------------------
+    ports:
+      - "25566:25565" # Изменил внешний порт на 25566, чтобы не было конфликта
+      - "25576:25575" # Изменил порт RCON на 25576
+    environment:
+      EULA: "TRUE"
+      VERSION: "1.20.1"
+      TYPE: "FORGE"
+      MEMORY: "3G" 
+      # --- ФИКСАЦИЯ ПАРОЛЯ RCON ---
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: "093b6d5e358d302933b7e326"
+    volumes:
+      - mc_data_1_20_1:/data # Создал новый независимый диск
+    restart: unless-stopped
+
+volumes:
+  mc_data_1_20_1: # Объявление нового диска для сохранения файлов
