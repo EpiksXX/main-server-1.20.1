@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mc_server_new:
-    image: itzg/minecraft-server:latest
+    image: itzg/minecraft-server:java17
     container_name: mc_1_20_1_modded
     # --- ЭТИ СТРОКИ ВКЛЮЧАЮТ КОНСОЛЬ ---
     tty: true
@@ -14,7 +14,7 @@ services:
       EULA: "TRUE"
       VERSION: "1.20.1"
       TYPE: "FORGE"
-      MEMORY: "3G" 
+      MEMORY: "4G" 
       # --- ФИКСАЦИЯ ПАРОЛЯ RCON ---
       ENABLE_RCON: "true"
       RCON_PASSWORD: "093b6d5e358d302933b7e326"
